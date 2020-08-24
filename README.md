@@ -11,5 +11,5 @@
     </a>
 </p>
 
-# course-java
-Curse of Java
+# controlclientes-java
+Control de clientes utilizando Java, JavaBeans, Servlets, JSPs, Maven, Bootstrap, MySQL
