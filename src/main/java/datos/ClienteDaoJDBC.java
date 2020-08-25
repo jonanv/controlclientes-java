@@ -8,8 +8,6 @@ package datos;
 import dominio.Cliente;
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
