@@ -41,11 +41,11 @@ public class Cliente {
         this.saldo = saldo;
     }
 
-    public int getIdCliete() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliete(int idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 

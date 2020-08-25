@@ -32,7 +32,7 @@ public class ClienteDaoJDBC {
             + " WHERE id_cliente=?";
     
     // Metodo listar
-    private List<Cliente> listar() {
+    public List<Cliente> listar() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -76,7 +76,7 @@ public class ClienteDaoJDBC {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
             
-            stmt.setInt(1, cliente.getIdCliete());
+            stmt.setInt(1, cliente.getIdCliente());
 
             rs = stmt.executeQuery();
             rs.absolute(1); // Nos posicionamos al primer registro devuelto
@@ -143,7 +143,7 @@ public class ClienteDaoJDBC {
             stmt.setString(3, cliente.getEmail());
             stmt.setString(4, cliente.getTelefono());
             stmt.setDouble(5, cliente.getSaldo());
-            stmt.setInt(6, cliente.getIdCliete());
+            stmt.setInt(6, cliente.getIdCliente());
 
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -165,7 +165,7 @@ public class ClienteDaoJDBC {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
 
-            stmt.setInt(1, cliente.getIdCliete());
+            stmt.setInt(1, cliente.getIdCliente());
 
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {
