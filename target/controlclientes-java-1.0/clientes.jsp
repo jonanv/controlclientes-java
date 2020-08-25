@@ -19,7 +19,7 @@
         <h1>Control de Clientes</h1>
         <ul>
             <c:forEach var="cliente" items="${clientes}">
-                <li>${ cliente.idCliente } ${ cliente.nombre } ${ cliente.apellido } ${ cliente.saldo }</li>
+                <li><i class="fas fa-sync"></i> ${ cliente.idCliente } ${ cliente.nombre } ${ cliente.apellido } ${ cliente.saldo }</li>
             </c:forEach>
         </ul>
 
@@ -28,5 +28,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/89f00d2d97.js" crossorigin="anonymous"></script>
     </body>
 </html>
