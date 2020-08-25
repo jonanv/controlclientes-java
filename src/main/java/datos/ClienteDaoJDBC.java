@@ -77,6 +77,7 @@ public class ClienteDaoJDBC {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
+            
             stmt.setInt(1, cliente.getIdCliete());
 
             rs = stmt.executeQuery();
@@ -145,6 +146,28 @@ public class ClienteDaoJDBC {
             stmt.setString(4, cliente.getTelefono());
             stmt.setDouble(5, cliente.getSaldo());
             stmt.setInt(6, cliente.getIdCliete());
+
+            rows = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+        return rows;
+    }
+    
+    // Metodo eliminar
+    public int eliminar(Cliente cliente) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_DELETE);
+
+            stmt.setInt(1, cliente.getIdCliete());
 
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {
