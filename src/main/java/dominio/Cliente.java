@@ -11,7 +11,7 @@ package dominio;
  */
 public class Cliente {
 
-    private int idCliete;
+    private int idCliente;
     private String nombre;
     private String apellido;
     private String email;
@@ -21,8 +21,8 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int idCliete) {
-        this.idCliete = idCliete;
+    public Cliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Cliente(String nombre, String apellido, String telefono, double saldo) {
@@ -32,8 +32,8 @@ public class Cliente {
         this.saldo = saldo;
     }
 
-    public Cliente(int idCliete, String nombre, String apellido, String email, String telefono, double saldo) {
-        this.idCliete = idCliete;
+    public Cliente(int idCliente, String nombre, String apellido, String email, String telefono, double saldo) {
+        this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -42,11 +42,11 @@ public class Cliente {
     }
 
     public int getIdCliete() {
-        return idCliete;
+        return idCliente;
     }
 
-    public void setIdCliete(int idCliete) {
-        this.idCliete = idCliete;
+    public void setIdCliete(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -91,7 +91,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "idCliete=" + idCliete + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono + ", saldo=" + saldo + '}';
+        return "Cliente{" + "idCliente=" + idCliente + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono + ", saldo=" + saldo + '}';
     }
 
 }
