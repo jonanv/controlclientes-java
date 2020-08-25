@@ -16,7 +16,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>Control de Clientes</h1>
+        <!--Cabecero-->
+        <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"></jsp:include>
+        
         <ul>
             <c:forEach var="cliente" items="${clientes}">
                 <li><i class="fas fa-sync"></i> ${ cliente.idCliente } ${ cliente.nombre } ${ cliente.apellido } ${ cliente.saldo }</li>
