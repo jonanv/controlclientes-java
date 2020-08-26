@@ -25,9 +25,10 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public Cliente(String nombre, String apellido, String telefono, double saldo) {
+    public Cliente(String nombre, String apellido, String email, String telefono, double saldo) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.email = email;
         this.telefono = telefono;
         this.saldo = saldo;
     }

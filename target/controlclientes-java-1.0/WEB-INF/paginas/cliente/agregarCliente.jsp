@@ -7,6 +7,7 @@
 <div class="modal fade" id="agregarClienteModal" tabindex="-1" aria-labelledby="agregarClienteModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            
             <div class="modal-header bg-info text-white">
                 <h5 class="modal-title">Agregar Cliente</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
