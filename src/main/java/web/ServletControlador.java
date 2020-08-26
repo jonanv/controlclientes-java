@@ -60,6 +60,7 @@ public class ServletControlador extends HttpServlet {
     private void editarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recuperamos el idCliente
         int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        //  TODO: Hacer validacion de idCliente con idClienteString
         
         Cliente cliente = new ClienteDaoJDBC().encontrar(new Cliente(idCliente));
         request.setAttribute("cliente", cliente);
@@ -77,12 +78,16 @@ public class ServletControlador extends HttpServlet {
                 case "insertar":
                     this.insertarCliente(request, response);
                     break;
+                case "modificar":
+                    this.modificarCliente(request, response);
+                    break;
                 default:
                     this.accionDefault(request, response);
             }
         } else {
             this.accionDefault(request, response);
         }
+        //  TODO: Mirar si es posible unificar el switch en un solo metodo obtenerAccion()
     }
 
     private void insertarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -103,6 +108,31 @@ public class ServletControlador extends HttpServlet {
 
         // Insertamos el nuevo objeto en la base de datos
         int registrosModificados = new ClienteDaoJDBC().insertar(cliente);
+        System.out.println("registrosModificados = " + registrosModificados);
+
+        // Redirigimos hacia accion por default
+        this.accionDefault(request, response);
+    }
+    
+    private void modificarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Recuperamos los valores del formulario editarCliente
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String email = request.getParameter("email");
+        String telefono = request.getParameter("telefono");
+        double saldo = 0;
+        String saldoString = request.getParameter("saldo");
+        
+        if (saldoString != null && !"".equals(saldoString)) {
+            saldo = Double.parseDouble(saldoString);
+        }
+
+        // Creamos el objeto de cliente (modelo)
+        Cliente cliente = new Cliente(idCliente, nombre, apellido, email, telefono, saldo);
+
+        // Modificar el nuevo objeto en la base de datos
+        int registrosModificados = new ClienteDaoJDBC().actualizar(cliente);
         System.out.println("registrosModificados = " + registrosModificados);
 
         // Redirigimos hacia accion por default
