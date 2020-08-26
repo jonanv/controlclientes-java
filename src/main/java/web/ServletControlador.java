@@ -22,18 +22,29 @@ public class ServletControlador extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.obtenerAccion(request, response);
-
+        String accion = request.getParameter("accion");
+        
+        if (accion != null) {
+            switch (accion) {
+                case "editar":
+                    this.editarCliente(request, response);
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+        } else {
+            this.accionDefault(request, response);
+        }
     }
 
     private void accionDefault(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Cliente> clientes = new ClienteDaoJDBC().listar();
         System.out.println("clientes = " + clientes);
-
+        
         HttpSession sesion = request.getSession();
         sesion.setAttribute("clientes", clientes);
         sesion.setAttribute("totalClientes", clientes.size());
-        sesion.setAttribute("saldoTotal", calcularSaldoTotal(clientes));
+        sesion.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));
         //request.getRequestDispatcher("clientes.jsp").forward(request, response);
         response.sendRedirect("clientes.jsp");
     }
@@ -46,9 +57,32 @@ public class ServletControlador extends HttpServlet {
         return saldoTotal;
     }
 
+    private void editarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Recuperamos el idCliente
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        
+        Cliente cliente = new ClienteDaoJDBC().encontrar(new Cliente(idCliente));
+        request.setAttribute("cliente", cliente);
+        System.out.println(cliente);
+        String jspEditar = "/WEB-INF/paginas/cliente/editarCliente.jsp";
+        request.getRequestDispatcher(jspEditar).forward(request, response);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.obtenerAccion(request, response);
+        String accion = request.getParameter("accion");
+        
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    this.insertarCliente(request, response);
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+        } else {
+            this.accionDefault(request, response);
+        }
     }
 
     private void insertarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,7 +93,7 @@ public class ServletControlador extends HttpServlet {
         String telefono = request.getParameter("telefono");
         double saldo = 0;
         String saldoString = request.getParameter("saldo");
-
+        
         if (saldoString != null && !"".equals(saldoString)) {
             saldo = Double.parseDouble(saldoString);
         }
@@ -73,40 +107,5 @@ public class ServletControlador extends HttpServlet {
 
         // Redirigimos hacia accion por default
         this.accionDefault(request, response);
-    }
-
-    private void obtenerAccion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String accion = request.getParameter("accion");
-
-        if (accion != null) {
-            switch (accion) {
-                case "insertar":
-                    this.insertarCliente(request, response);
-                    break;
-                case "editar":
-                    this.editarCliente(request, response);
-                    break;
-                default:
-                    this.accionDefault(request, response);
-                    break;
-            }
-        } else {
-            this.accionDefault(request, response);
-        }
-    }
-
-    private void editarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Recuperamos el idCliente
-        int idCliente = 0;
-        String idClienteString = request.getParameter("idCliente");
-        
-        if (idClienteString != null && !"".equals(idClienteString)) {
-            idCliente = Integer.parseInt(idClienteString);
-        }
-        
-        Cliente cliente = new ClienteDaoJDBC().encontrar(new Cliente(idCliente));
-        request.setAttribute("cliente", cliente);
-        String jspEditar = "/WEB-INF/paginas/cliente/editarCliente.jsp";
-        request.getRequestDispatcher(jspEditar).forward(request, response);
     }
 }

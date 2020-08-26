@@ -16,13 +16,52 @@
     </head>
     <body>
         <!--Cabecero-->
-        <jsp:include page="/WEB-INF/paginas/comunes/cabecero.jsp"></jsp:include>
-        
-        <!--Botones de Navegacion-->
-        <jsp:include page="/WEB-INF/paginas/comunes/botonesNavegacionEdicion.jsp"></jsp:include>
-        
+        <jsp:include page="/WEB-INF/paginas/comunes/cabecero.jsp"/>
+
+        <form action="${ pageContext.request.contextPath }/ServletControlador?accion=modificar&idCliente=${ cliente.idCliente }" method="POST" class="was-validated" autocomplete="off">
+            <!--Botones de Navegacion-->
+            <jsp:include page="/WEB-INF/paginas/comunes/botonesNavegacionEdicion.jsp"/>
+
+            <section id="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Editar Cliente</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" placeholder="*Nombre" value="${ cliente.nombre }" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">Apellido</label>
+                                        <input type="text" class="form-control" name="apellido" placeholder="*Apellido" value="${ cliente.apellido }" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" name="email" placeholder="*Email" value="${ cliente.email }" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">Telefono</label>
+                                        <input type="tel" class="form-control" name="telefono" placeholder="*Telefono" value="${ cliente.telefono }" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="saldo">Saldo</label>
+                                        <input type="number" class="form-control" name="saldo" placeholder="*Saldo" value="${ cliente.saldo }" step="any" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+
+
         <!--Pie de pagina-->
-        <jsp:include page="/WEB-INF/paginas/comunes/piePagina.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/paginas/comunes/piePagina.jsp"/>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

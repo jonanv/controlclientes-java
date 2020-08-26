@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="saldo">Saldo</label>
-                        <input type="number" class="form-control" name="saldo" placeholder="*Saldo" required>
+                        <input type="number" class="form-control" name="saldo" placeholder="*Saldo" step="any" required>
                     </div>
                 </div>
                 <div class="modal-footer">
