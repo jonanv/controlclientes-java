@@ -16,16 +16,16 @@
     </head>
     <body>
         <!--Cabecero-->
-        <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/paginas/comunes/cabecero.jsp"></jsp:include>
         
         <!--Botones de navegacion-->
-        <jsp:include page="WEB-INF/paginas/comunes/botonesNavegacion.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/paginas/comunes/botonesNavegacion.jsp"></jsp:include>
         
         <!--Listado Clientes-->
-        <jsp:include page="WEB-INF/paginas/cliente/listadoClientes.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/paginas/cliente/listadoClientes.jsp"></jsp:include>
         
         <!--Pie de pagina-->
-        <jsp:include page="WEB-INF/paginas/comunes/piePagina.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/paginas/comunes/piePagina.jsp"></jsp:include>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
