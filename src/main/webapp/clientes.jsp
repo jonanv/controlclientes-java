@@ -4,7 +4,6 @@
     Author     : giovanni
 --%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,11 +21,8 @@
         <!--Botones de navegacion-->
         <jsp:include page="WEB-INF/paginas/comunes/botonesNavegacion.jsp"></jsp:include>
         
-        <ul>
-            <c:forEach var="cliente" items="${clientes}">
-                <li><i class="fas fa-sync"></i> ${ cliente.idCliente } ${ cliente.nombre } ${ cliente.apellido } ${ cliente.saldo }</li>
-            </c:forEach>
-        </ul>
+        <!--Listado Clientes-->
+        <jsp:include page="WEB-INF/paginas/cliente/listadoClientes.jsp"></jsp:include>
         
         <!--Pie de pagina-->
         <jsp:include page="WEB-INF/paginas/comunes/piePagina.jsp"></jsp:include>
