@@ -28,10 +28,13 @@ public class ServletControlador extends HttpServlet {
     private void accionDefault(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Cliente> clientes = new ClienteDaoJDBC().listar();
         System.out.println("clientes = " + clientes);
-        request.setAttribute("clientes", clientes);
-        request.setAttribute("totalClientes", clientes.size());
-        request.setAttribute("saldoTotal", calcularSaldoTotal(clientes));
-        request.getRequestDispatcher("clientes.jsp").forward(request, response);
+        
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("clientes", clientes);
+        sesion.setAttribute("totalClientes", clientes.size());
+        sesion.setAttribute("saldoTotal", calcularSaldoTotal(clientes));
+        //request.getRequestDispatcher("clientes.jsp").forward(request, response);
+        response.sendRedirect("clientes.jsp");
     }
 
     private double calcularSaldoTotal(List<Cliente> clientes) {
